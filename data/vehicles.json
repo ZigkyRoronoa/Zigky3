@@ -10,29 +10,5 @@
     "description": "Vehículo ideal para trabajos y misiones.",
     "price": 22000,
     "image": "assets/images/vehicle2.jpg"
-  },
-  {
-    "name": "SuperFast GT",
-    "description": "Deportivo de alta velocidad con nitro.",
-    "price": 45000,
-    "image": "assets/images/vehicle3.jpg"
-  },
-  {
-    "name": "SuperFast GT",
-    "description": "Deportivo de alta velocidad con nitro.",
-    "price": 45000,
-    "image": "assets/images/vehicle4.jpg"
-  },
-  {
-    "name": "SuperFast GT",
-    "description": "Deportivo de alta velocidad con nitro.",
-    "price": 45000,
-    "image": "assets/images/vehicle5.jpg"
-  },
-  {
-    "name": "SuperFast GT",
-    "description": "Deportivo de alta velocidad con nitro.",
-    "price": 45000,
-    "image": "assets/images/vehicle6.jpg"
   }
 ]
