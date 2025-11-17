@@ -10,5 +10,11 @@
     "description": "Vehículo ideal para trabajos y misiones.",
     "price": 22000,
     "image": "assets/images/vehicle2.jpg"
+  },
+  {
+    "name": "Camioneta Ranger",
+    "description": "Vehículo ideal para trabajos y misiones.",
+    "price": 22000,
+    "image": "assets/images/vehicle2.jpg"
   }
 ]
