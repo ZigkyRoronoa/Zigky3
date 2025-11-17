@@ -1,11 +1,14 @@
 const UPDATES_JSON = 'data/updates.json';
 const VEHICLES_JSON = 'data/vehicles.json';
 
+// Actualizar el año automáticamente
 document.getElementById('year').innerText = new Date().getFullYear();
 
+// Función para cargar actualizaciones
 async function loadUpdates() {
   try {
     const res = await fetch(UPDATES_JSON);
+    if (!res.ok) throw new Error('No se pudo cargar updates');
     const updates = await res.json();
 
     const list = document.getElementById('updates-list');
@@ -22,16 +25,19 @@ async function loadUpdates() {
     if (full) full.innerHTML = html;
 
   } catch (err) {
-    console.log('Error cargando updates');
+    console.error('Error cargando updates:', err);
   }
 }
 
-async function loadVehicles(){
-  try{
+// Función para cargar vehículos
+async function loadVehicles() {
+  try {
     const res = await fetch(VEHICLES_JSON);
+    if (!res.ok) throw new Error('No se pudo cargar vehicles.json');
     const vehicles = await res.json();
 
-    const list = document.getElementById('vehicle-list') || document.getElementById('shop-list');
+    const featuredList = document.getElementById('featured-list'); // destacados
+    const shopList = document.getElementById('shop-list');         // tienda
 
     const html = vehicles.map(v => `
       <div class="vehicle">
@@ -42,12 +48,14 @@ async function loadVehicles(){
       </div>
     `).join('');
 
-    list.innerHTML = html;
+    if (featuredList) featuredList.innerHTML = html;
+    if (shopList) shopList.innerHTML = html;
 
-  }catch(err){
-    console.log("Error cargando vehículos");
+  } catch (err) {
+    console.error("Error cargando vehículos:", err);
   }
 }
 
+// Ejecutar las funciones al cargar la página
 loadUpdates();
 loadVehicles();
