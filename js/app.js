@@ -3,10 +3,16 @@ const VEHICLES_JSON = 'data/vehicles.json';
 
 document.getElementById('year').innerText = new Date().getFullYear();
 
-async function loadUpdates() {
+async function loadVehicles() {
   try {
-    const res = await fetch(UPDATES_JSON);
-    const updates = await res.json();
+    console.log("Cargando vehículos...");
+    console.log("Ruta JSON:", VEHICLES_JSON);
+    console.log("Contenedor vehicle-list:", document.getElementById('vehicle-list'));
+    console.log("Contenedor shop-list:", document.getElementById('shop-list'));
+
+    const res = await fetch(VEHICLES_JSON);
+    const vehicles = await res.json();
+
 
     const list = document.getElementById('updates-list');
     const full = document.getElementById('updates-full');
