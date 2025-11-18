@@ -1,21 +1,19 @@
 const UPDATES_JSON = 'data/updates.json';
 const VEHICLES_JSON = 'data/vehicles.json';
 
+// Poner el año actual en el footer
 document.getElementById('year').innerText = new Date().getFullYear();
 
-async function loadVehicles() {
+// Cargar actualizaciones
+async function loadUpdates() {
   try {
-    console.log("Cargando vehículos...");
-    console.log("Ruta JSON:", VEHICLES_JSON);
-    console.log("Contenedor vehicle-list:", document.getElementById('vehicle-list'));
-    console.log("Contenedor shop-list:", document.getElementById('shop-list'));
-
-    const res = await fetch(VEHICLES_JSON);
-    const vehicles = await res.json();
-
+    const res = await fetch(UPDATES_JSON);
+    const updates = await res.json();
 
     const list = document.getElementById('updates-list');
     const full = document.getElementById('updates-full');
+
+    if (!list && !full) return; // Si no hay contenedores, salir
 
     const html = updates.map(u => `
       <div class="update">
@@ -28,21 +26,19 @@ async function loadVehicles() {
     if (full) full.innerHTML = html;
 
   } catch (err) {
-    console.log('Error cargando updates');
+    console.log('Error cargando updates:', err);
   }
 }
 
+// Cargar vehículos SOLO para Shop.html
 async function loadVehicles() {
   try {
+    const list = document.getElementById('shop-list'); // Solo Shop
+
+    if (!list) return; // Si no existe el contenedor, salir
+
     const res = await fetch(VEHICLES_JSON);
     const vehicles = await res.json();
-
-    // Detecta el contenedor correcto según la página
-    const list = document.getElementById('vehicle-list') ||
-                 document.getElementById('shop-list');
-
-    // Si no existe contenedor, salimos sin error
-    if (!list) return;
 
     const html = vehicles.map(v => `
       <div class="vehicle">
@@ -60,5 +56,6 @@ async function loadVehicles() {
   }
 }
 
+// Ejecutar funciones
 loadUpdates();
 loadVehicles();
