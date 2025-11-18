@@ -37,7 +37,7 @@ async function loadVehicles() {
 
     if (!list) return; // Si no existe el contenedor, salir
 
-    const res = await fetch(VEHICLES_JSON);
+    const res = await fetch(vehicles_json);
     const vehicles = await res.json();
 
     const html = vehicles.map(v => `
