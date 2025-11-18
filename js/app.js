@@ -26,12 +26,17 @@ async function loadUpdates() {
   }
 }
 
-async function loadVehicles(){
-  try{
+async function loadVehicles() {
+  try {
     const res = await fetch(VEHICLES_JSON);
     const vehicles = await res.json();
 
-    const list = document.getElementById('vehicle-list') || document.getElementById('shop-list');
+    // Detecta el contenedor correcto según la página
+    const list = document.getElementById('vehicle-list') ||
+                 document.getElementById('shop-list');
+
+    // Si no existe contenedor, salimos sin error
+    if (!list) return;
 
     const html = vehicles.map(v => `
       <div class="vehicle">
@@ -44,8 +49,8 @@ async function loadVehicles(){
 
     list.innerHTML = html;
 
-  }catch(err){
-    console.log("Error cargando vehículos");
+  } catch (err) {
+    console.log("Error cargando vehículos:", err);
   }
 }
 
